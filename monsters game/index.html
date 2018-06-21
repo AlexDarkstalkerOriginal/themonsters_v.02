@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>TheMonsters</title>	
+</head>    
+
+<body>		
+	<div class="content app" >		
+	
+		<div class="nav">
+			<div class="logo">
+				<img src="img/logo.png" alt="">
+			</div>
+			<button class="market">Market</button>
+			<button class="lab active">Lab</button>
+			<button class="battleground">Battleground</button>
+			<button class="rank">Ranked</button>
+			<a href="#faq" class="popup htp">How to play</a>
+			<a href="#about" class="popup contact">Contact</a>
+		</div>
+
+		<div class="container">
+			<div class="lab_nav" v-show="lab">
+				<button class="lab_monsters active">My monsters</button>
+				<button class="lab_gift">Get monster</button>
+			</div>		
+			
+			<div v-show="market">
+				<div id="monster-market">
+					<monster-market
+					  v-for="monster in monsters_market"				  
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"
+						v-bind:owner="monster.owner"
+						v-bind:prize="monster.price"
+					></monster-market>		
+				</div>
+			</div>
+
+			<div v-show="lab_monsters">
+				<div id="my-monster-lab">
+					<my-monster-lab
+						v-for="monster in my_monsters"				  
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"
+						v-bind:sale="monster.sale"
+					></my-monster-lab>		
+				</div>						
+			</div>
+			<div class="no_monsters" v-show="no_monsters">
+				<h1>You don't have crypto monster at the moment. There are two major ways to obtain a crypto monster</h1>			
+				<div class="column">
+					<h2>Try to get free monster</h2> 	
+					<a href="#" class="fake_gift"><button>Get free monster</button></a>
+				</div>
+				<div class="column">
+					<h2>Buy from other players on the Market</h2> 	
+					<a href="#" class="fake_market"><button>Go to market</button></a>
+				</div>			
+			</div>
+			
+			<div v-show="battleground">
+				<div id="monster-bg">
+					<monster-bg
+						v-for="monster in monsters_battle"				  
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"
+						v-bind:owner="monster.owner"
+						v-bind:ownername="monster.ownername"						
+						v-bind:view_name="monster.view_name"						
+					></monster-bg>		
+				</div>
+			</div>
+
+			<div v-show="rank">				
+					<monster-ranked
+					 	v-for="monster in monsters_ranked"				  
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"
+						v-bind:owner="monster.owner"
+					></monster-ranked>						
+			</div>
+						
+			<div v-show="lab_gift">
+				<div class="gift_box">
+					<h1>Get your new monster</h1>
+					<div class="pay">
+						<img src="img/box.png" alt="">
+						<span class="prize">Only 0.01</span>
+						<button class="get pay_monster_get">Get monster</button>
+					</div>						
+					<div class="free">
+						<img src="img/box_green.png" alt="">
+						<span class="cost">FREE monster</span>
+						<button class="get get_free_monster">Get free</button>
+						<span class="tip">Only 3 for each account</span>
+					</div>
+					<div class="error">
+						<h1></h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="congrat" v-show="congrat">
+				<h1>Congratulate! You get <span class="name">{{congrat_name}}</span></h1>	
+				<monster-gift
+				  v-for="monster in monsters_gift"				  
+				  v-bind:speed="monster.speed"
+				  v-bind:name="monster.name"				  
+				  v-bind:flex="monster.flex"
+				  v-bind:power="monster.power"
+				  v-bind:weight="monster.weight"
+				  v-bind:src="'img/' + monster.name + '.png'"	  
+				></monster-gift>												
+			</div>
+
+			<div class="versus" v-show="versus">	
+				<div class="fight_res">Fight result</div>
+
+				<div class="wrap">
+					<monster-fight
+						v-for="monster in monsters_fight"				  
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"
+						v-bind:owner="monster.owner"
+						v-bind:win="monster.win"
+						v-bind:boolen="monster.boolen"
+					></monster-fight>	
+
+					<div class="vs">VS</div>
+				</div>
+			</div>
+		
+			<div class="monster_page" v-show="monster_page">			
+				<my-monster-page
+					v-for="monster in monster_page_arr"				  
+					v-bind:speed="monster.speed"
+					v-bind:name="monster.name"				  
+					v-bind:flex="monster.flex"
+					v-bind:power="monster.power"
+					v-bind:weight="monster.weight"
+					v-bind:src="'img/' + monster.name + '.png'"
+					v-bind:owner="monster.owner"
+				></my-monster-page>						
+				<div class="history">
+					<h1>Fights history</h1>
+					<ul>					
+						<li><span class="opponent">Oppenent</span><span class="result">Result</span></li>						
+					</ul>
+				</div>
+			</div>
+
+				<div class="account_page" v-show="account_page">
+				<h1>Player information</h1>
+				<div class="info_block">
+					<span class="name">{{username}}</span><a v-if="can_change_name" class="popup" href="#editname"><img src="img/edit.png" class="edit_name"></a>
+					<span class="owner">owner: <span class="value">{{player_owner}}</span></span>
+				</div>
+				<div class="dinamic_block">
+					<h2>Game history</h2>
+
+					<ul class="data_headers">
+						<li>
+							<span>Player</span>
+							<span>Opponent</span>
+							<span>Result</span>
+							<span>Info</span>
+						</li>	
+					</ul>
+
+					<ul class="data_history history">
+						<li>
+							<span><img src="img/Skylancer.png" alt=""></span>
+							<span><img src="img/Skylancer.png" alt=""></span>
+							<span class="winner">Win</span>
+							<a href="#" class="info"><img src="img/info.png"></a>
+						</li>
+						<li>
+							<span><img src="img/Skylancer.png" alt=""></span>
+							<span><img src="img/Skylancer.png" alt=""></span>
+							<span class="loose">Loose</span>
+							<a href="#" class="info"><img src="img/info.png"></a>
+						</li>						
+					</ul>
+
+					<!-- <div class="history_nav">
+						<button class="prev"><</button>
+						<button class="next">></button>
+					</div> -->
+				</div>
+
+				<div class="player_caps">
+					<h2>Player monsters</h2>
+					<div id="monster-page-player">
+					<player-monsters
+						v-for="monster in player_monsters"	
+						v-bind:speed="monster.speed"
+						v-bind:name="monster.name"				  
+						v-bind:flex="monster.flex"
+						v-bind:power="monster.power"
+						v-bind:weight="monster.weight"
+						v-bind:src="'img/' + monster.name + '.png'"
+						v-bind:id="monster.id"						
+					></player-monsters>		
+				</div>		
+				</div>
+			</div>
+
+		</div>
+	
+		<div id="my_monsters_popup" class="mfp-fade mfp-hide">		
+			<h1>Pick your monster for fight!</h1>
+			<div id="my-monster-lab-popup">
+				<my-monster-lab-popup				  
+					v-for="monster in my_monsters"				  
+					v-bind:speed="monster.speed"
+					v-bind:name="monster.name"				  
+					v-bind:flex="monster.flex"
+					v-bind:power="monster.power"
+					v-bind:weight="monster.weight"
+					v-bind:src="'img/' + monster.name + '.png'"
+					v-bind:id="monster.id"
+					v-bind:born_time="monster.born_time"					
+				></my-monster-lab-popup>
+			</div>		
+		</div>
+
+		<div id="faq" class="mfp-fade mfp-hide">
+			<div class="container_faq">
+				<h1>How to play</h1>
+				<p>
+					<b>What is The Monsters?</b>
+					<br>
+					The Monsters is a game centered around fights, collectible, and oh-so-adorable creatures we call CryptoMonsters! Each monster is one-of-a-kind and 100% owned by you; it cannot be replicated, taken away, or destroyed. The Monsters is the blockchain game running on Nebulas smart contracts.
+					1) Install Nebulas wallet plugin for Chrome. 
+					2) Unlock your Nebulas wallet and please make sure your are on Mainnet as shown on the right.
+					3) Go to https://alexdarkstalkeroriginal.github.io/themonsters/index.html to start playing.
+					The Monster requires a little NAS to pay for gas to complete in-game operations.
+					
+					<br><br>
+						
+					<b>How to obtain crypto monster</b> <br>
+					OPEN YOUR BOX: You can give three random crypto Monster for free, player can use 0.01 NAS to buy Monster Box as well.					
+					Buy From Other Players: 
+					Visit Market to buy crypto Monster with certain parameters from other players.
+					<br><br>
+					<b>How to attack</b><br>
+					Growing your crypto monster by attacking opponents, take the lead and raise your level.
+					The core parameter of every Monster is the level  which defines its influence. Monster is able to level up by attacking others and taking a bite off losers(20% of level).
+					Game economy can’t be influenced by developers as there is no tools to change code after smart contracts are deployed and game is launched.
+					<br><br>
+					<b>Know more about freeze time</b><br>
+					After the fighting ends, there were freeze time for both sides. Freeze time for the offensive is determined by the Renewal Value: the more the renewal, the shorter the freeze time. For defenders, the freeze time is same one hour.
+					<br><br>
+					<b>About market</b><br>
+					Crypto Monsters are traded directly between players.You can click “Sell” button for transaction, and take it off the market by click “Cancel Sale” button.
+				</p>
+			</div>
+		</div>
+
+		<div id="editname" class="mfp-fade mfp-hide">
+			<h1>Enter your new username</h1>
+			<input type="text">
+			<button class="set_name">Set name</button>
+		</div>
+
+		<div id="about" class="mfp-fade mfp-hide">
+			<h1>Contact</h1>
+			<span>E-mail: 
+				<a href="mailto:alexdarkstalkeroriginal@gmail.com">alexdarkstalkeroriginal@gmail.com</a>
+			</span>
+		</div>
+	</div>
+
+	<div id="sell" class="mfp-fade mfp-hide">
+		<h1>Enter price for monster</h1>
+		<input type="text"><span class="nas">NAS</span>
+		<button class="sell">Sell</button>
+	</div>
+	
+	<a href="#error_info" class="error_info_fake popup"></a>
+
+	<div id="error_info" class="mfp-fade mfp-hide">
+		<h1 class="error"></h1>
+		<button class="ok_err">Ok</button>
+	</div>
+
+	<a href="#sell" class="popup sell_fake"></a>
+	<a href="#my_monsters_popup" class="popup attack_fake"></a>
+
+	<a href="#transaction" class="transaction" style="position: absolute; width: 0.1px; opacity: .1"></a>	
+	<div id="transaction" class="mfp-hide mfp-fade">
+		<p>Transaction is <span class="status_trans"></span></p>
+		<!-- <img src="img/pending.gif" alt=""> -->
+		<div class="hash"></div>			
+	</div>
+	
+	<div class="noExtension" style="display: none"> 
+		NOTE: Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>  to use TheMonsters
+	</div>
+	<div class="errNetwork" style="display: none">
+		NOTE: Sorry, you use incorrect net
+	</div>	
+
+	<script src='lib/jquery-3.3.1.min.js'></script>
+	<link rel="stylesheet" href="lib/main.css">	
+	<link rel="stylesheet" href="lib/magnific-popup.css">    
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<script src="lib/vue.min.js"></script>
+	<script src='lib/nebPay.js'></script>    	
+    <script src='lib/nebulas.js'></script>
+    <script src='lib/jquery.magnific-popup.js'></script>
+    <script src="lib/common.js"></script>            
+</body>
+</html>

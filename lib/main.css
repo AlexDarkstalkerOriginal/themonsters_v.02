@@ -76,6 +76,14 @@ input:focus, button:focus, a:focus {
 }
 
 
+button, .info, .monster .owner .value, .popup, .monster .owner p {
+  transition: .3s;
+}
+
+button:hover,.info:hover , .monster .owner .value:hover, .popup:hover, .monster .owner p:hover  {
+  opacity: .5;
+}
+
 /* монстер компонент*/
 
   .monster {  
@@ -764,7 +772,7 @@ input:focus, button:focus, a:focus {
 }
 
 .edit {
-  display: none !important;
+  display: none !important;  
 }
 
 #faq, #about {
@@ -996,6 +1004,17 @@ input:focus, button:focus, a:focus {
 
 #my-monster-lab .edit {
   display: inline-block !important; 
+  position: relative;
+}
+
+.edit_monster_name_tip {
+  position: absolute;
+  top: -25px;
+  left: 25px;
+  width: 130px;
+  background: blue;
+  color: #fff;
+  padding: 3px 6px;
 }
 
 .true_name p {
@@ -1015,3 +1034,8 @@ input:focus, button:focus, a:focus {
   height: 15px;
 }
 
+.monster_page h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 40px;
+}

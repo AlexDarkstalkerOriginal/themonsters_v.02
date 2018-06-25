@@ -46,7 +46,9 @@
 						v-bind:src="'img/' + monster.name + '.png'"
 						v-bind:id="monster.id"
 						v-bind:owner="monster.owner"
-						v-bind:prize="monster.price"
+						v-bind:prize="monster.price"						
+						v-bind:ownername="monster.ownername"						
+						v-bind:view_name="monster.view_name"
 					></monster-market>		
 				</div>
 			</div>
@@ -166,6 +168,7 @@
 			</div>
 		
 			<div class="monster_page" v-show="monster_page">			
+				<h1>Monster page</h1>				
 				<my-monster-page
 					v-for="monster in monster_page_arr"				  
 					v-bind:speed="monster.speed"
@@ -330,7 +333,7 @@
 	</div>
 	
 	<div class="noExtension" style="display: none"> 
-		NOTE: Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a>  to use TheMonsters
+		NOTE: Please install <a target="_blank" href="https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco">WebExtensionWallet</a>  to use TheMonsters
 	</div>
 	<div class="errNetwork" style="display: none">
 		NOTE: Sorry, you use incorrect net

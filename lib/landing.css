@@ -1,0 +1,507 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Jua', sans-serif;
+  line-height: 1.4;
+  font-size: 18px;
+  color: #fff;  
+  position: relative;
+  width: 100%;  
+  background: linear-gradient(175deg,#3e2ba5,25%,#E91E63,50%,#3e2ba5,75%,#E91E63);
+}
+
+input, button {
+  font-family: 'Jua', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+p, h1, h2, h3, h4, h5, span {
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
+} 
+
+h1, h2, h3, h4, h5 {
+  color: #fff;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+section {
+  width: 100%;    
+  padding: 100px 10% 0 10%;  
+  height: 100vh;
+  display: block;
+  position: relative;
+}
+
+#collect, #faq {
+  min-height: 100vh;
+  height: unset;
+  padding-bottom: 200px;
+}
+
+#faq {
+  padding-bottom: 100px;
+}
+
+section:before {
+  /*content: '';*/
+  /*background: url('../img/lab.png') no-repeat; */
+  /*background: #fff;
+  background-size: cover;    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: -1;*/
+}
+
+section:after {
+  /*content: '';
+  background: red; 
+  background-size: cover;    
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: .25;
+  z-index: -1;*/
+}
+
+button {
+  margin: 30px 0; 
+  background: #f44336;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  width: 220px;
+  vertical-align: middle;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px #f44336;
+  transition: .3s;
+}
+
+button:hover {
+  background: #ff837a;
+  box-shadow: 2px 2px 5px #ff837a;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marker {
+  color: #f44336;
+}
+
+.wrapp {
+  width: 1000px;
+  margin: 40px auto 0 auto; 
+}
+
+.wrapp:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*intro*/
+  .logo {
+    position: relative;
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .logo img {
+    position: relative;
+    width: 100%;
+  }
+
+  .offer {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    width: 1000px;
+    transform: translateY(-50%);
+  }
+
+  .offer h1 {
+    text-align: left;
+  }
+
+  .scrolldown img {
+    transform: rotate(-45deg);
+    width: 40px;
+    margin-bottom: 5px;
+  }
+
+  .scrolldown {
+    position: absolute;
+    color: #d8d7d7;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 14px;
+  }
+/*intro*/
+
+/* монстер компонент*/
+  .monster {  
+    display: inline-block;
+    float: left;
+    width: 32%;
+    background: #fff;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    padding: 20px 15px;
+    position: relative;
+  }
+
+  .monster .place {    
+    font-size: 50px;
+    vertical-align: top;
+    top: 40px;
+    line-height: 0.6;    
+    color: blue;
+    font-weight: 900;
+  }
+
+  .monster img {
+    display: block;
+    margin: 20px auto 0px auto;    
+    height: 161.1px;
+  }
+
+  .monster span {
+    font-size: 14px;
+    opacity: .7;
+  }
+
+  .monster .value {
+    font-size: 18px;
+    opacity: 1;
+    font-weight: bold;
+  }
+
+  .owner {
+    display: block;
+    width: 90%;  
+    margin: 0 auto 10px auto;
+    text-align: center;  
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;    
+  }
+
+  .owner .value:after {
+    content: '...';
+    background: #fff;
+    width: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 4px;
+  }
+
+  .owner .value {  
+    font-size: 14px;
+    display: block;
+  }
+
+  .monster .weight {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    font-size: 18px;
+    color: #0000ff;
+  }
+
+  .monster:nth-child(3n+3) {
+    margin-right: 0;
+  }
+
+  .monster .stats {
+    width: 92%;
+    margin: 15px auto;
+    text-align: center;
+    padding: 5px 2px;
+    border-top: 1px solid #bfbbfb;
+    border-bottom: 1px solid #bfbbfb;
+  }
+
+  .monster .stats span {
+    margin-right: 5px;
+  }
+
+  .monster .stats span:nth-child(3) {
+    margin-right: 0;
+  }
+
+  .monster .stats .value {
+    color: #0000ff;
+  }
+
+  .monster .sell a, .monster .unsell a {
+    color: #fff;
+  }
+
+  .prize:after {
+    content: 'NAS';
+    margin-left: 5px;
+  }
+
+  .monster .unsell {
+    background: red;
+    box-shadow: 3px 3px 10px red;
+  }
+
+  .monster .prize {
+    font-size: 16px;
+    background: #291bff;
+    padding: 7px 16px;
+    color: #fff;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    width: 110px;
+    margin: 5px auto 10px auto;  
+  }
+
+  .monster button, .gift_box .get, .no_monsters button, #sell .sell, .ok_err, #editname .set_name{ 
+    border: none;
+    padding: 10px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #4e44ff;
+    color: #fff;
+    box-shadow: 3px 3px 10px #4e44ff;
+    margin: 15px auto;
+    display: block;
+    cursor: pointer;
+  }
+
+  #editname .set_name {
+    width: 200px;
+  }
+
+  .monster .info {
+    position: absolute;
+    bottom: 40px;
+    left: 230px;
+  }
+
+  .monster .info img {
+    width: 24px;      
+    height: unset;
+    opacity: .6;
+    margin: unset;  
+  }
+
+  .monster .attack {
+    background: #d03939;
+    box-shadow: 3px 3px 10px #d03939;
+  }
+
+  .monster .freeze {
+    background: #717171; 
+    box-shadow: 3px 3px 10px #717171;
+    color: #e0e0e0;
+  }
+
+  .name h3, .name a {
+    display: inline-block;
+    position: relative;
+  }
+
+  .name a img {
+    position: absolute;
+    top: -13px;
+    margin: unset;
+    height: unset;
+    opacity: .8;
+    right: -22px;
+    width: 16px;
+  }
+
+  .monster, .monster h3 {
+    color: #000;
+  }
+
+  .monster .owner p {
+    color: #f44336;
+  }
+/* монстер компонент*/
+
+/*get*/
+  #get .monster {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    margin-top: 150px;
+  }
+
+  .text {
+    display: inline-block;
+    width: 320px;
+    margin-top: 230px;
+    vertical-align: top;
+  }
+
+  .scnd_text {
+    margin-left: 520px;
+  }
+
+  .frst_text {
+    margin-left: -100px;
+  }
+
+  .number {
+    font-size: 30px;
+    background: red;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .desc {
+    display: inline-block;
+    width: 270px;
+    margin-left: 10px;
+  }
+
+  .desc, .number {
+    vertical-align: top;
+  }
+
+  #get li {
+    margin-bottom: 40px;
+  }
+/*get*/
+
+/*point*/
+  .point {
+    position: absolute;
+    background: red;
+    color: #fff;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    padding-top: 3px;
+    font-weight: bold;
+  }    
+
+  .point_1 {
+    top: 15px;
+    left: 80px;
+  }
+
+  .point_2 {
+    top: 15px;
+    right: 77px;
+  }
+
+  .point_3 {    
+    top: 230px;
+    right: 10px;
+  }
+
+  .point_4 {
+    top: 305px;
+    left: 70px;
+  }
+
+  .point_5 {
+    bottom: 40px;
+    left: 80px;
+  }
+
+  .point_6 {
+    bottom: 40px;
+    right: 40px;
+  }
+/*point*/
+
+/*collect*/
+  #collect h2 {
+    text-align: center;   
+    margin-top: 30px; 
+  }
+  
+  #collect button {
+    margin: 30px auto;
+    display: block;
+  }
+/*collect*/
+
+/*fight*/
+  #fight {
+    padding-bottom: 100px;
+  }
+  #fight .f_v {
+    width: 835px;
+    margin: 50px auto 0 auto;
+    display: block;
+  }
+
+  .vs {
+    font-size: 60px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #fight h2 {
+    text-align: center;   
+    margin-top: 30px; 
+  }
+
+  #fight button {
+    margin: 30px auto;
+    display: block;
+  }
+/*fight*/
+
+/*faq*/
+  .container_faq {
+    width: 1000px;
+    display: block;
+    margin: 50px auto 0 auto;
+  }  
+
+  .container_faq p {
+    font-size: 20px;
+  }
+
+  .container_faq b {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #3e2ba5;
+  }
+/*faq*/
